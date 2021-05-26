@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KBO선수 오버롤 확인 사이트</title>
+</head>
+<body>
+
+    <div>
+        <button type="button" class="btn-img" onclick="window.open('https://www.koreabaseball.com/')">
+		    <img width="640" height="480" alt="티켓 예매 링크" src="{{url_for('static', filename='image/main_image.jpg') }}" width="640" height="360" alt="KBO사이트로 이동"/>
+		</button>
+
+   </div>
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

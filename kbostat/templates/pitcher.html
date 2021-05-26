@@ -1,0 +1,2085 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2020년 KBO선수 투수 오버롤</title>
+    <body>
+    투수 오버롤 확인 페이지 입니다. 검색하고 싶은 선수는 Ctrl+F 를 통해서 찾아주세요
+    <p> (이름을 누르면 오각형 오버롤 이미지가 나타납니다)</p>
+    </body>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0lax"></th>
+    <th class="tg-0lax">NAME</th>
+    <th class="tg-0lax">Team</th>
+    <th class="tg-0lax">K Ability</th>
+    <th class="tg-0lax">H Ability</th>
+    <th class="tg-0lax">CONTROL</th>
+    <th class="tg-0lax">BREAK</th>
+    <th class="tg-0lax">CLUTCH</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_채드벨.png')}}">채드벨</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_요키시.png')}}">요키시</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax">84</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_뷰캐넌.png')}}">뷰캐넌</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">56</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_킹험.png')}}">킹험</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_루친스키.png')}}">루친스키</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_가뇽.png')}}">가뇽</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_라이트.png')}}">라이트</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_윌슨.png')}}">윌슨</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">8</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_알칸타라.png')}}">알칸타라</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">84</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">9</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_서폴드.png')}}">서폴드</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">73</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">10</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_쿠에바스.png')}}">쿠에바스</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">11</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_샘슨.png')}}">샘슨</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">12</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_플렉센.png')}}">플렉센</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">74</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">73</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">13</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_라이블리.png')}}">라이블리</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">14</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_데스파이네.png')}}">데스파이네</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">15</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_핀토.png')}}">핀토</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">16</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_오승환.png')}}">오승환</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">82</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">17</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_양현종.png')}}">양현종</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">18</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_브리검.png')}}">브리검</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">19</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_켈리.png')}}">켈리</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">20</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_스트레일리.png')}}">스트레일리</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">21</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_신정락.png')}}">신정락</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">22</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_이승현.png')}}">이승현</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">15</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">23</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_이재학.png')}}">이재학</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_문성현.png')}}">문성현</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">22</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_김건태.png')}}">김건태</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_박시영.png')}}">박시영</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">19</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">43</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">27</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_이태양.png')}}">이태양</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">28</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_박종훈.png')}}">박종훈</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">29</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_임찬규.png')}}">임찬규</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_송윤준.png')}}">송윤준</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">82</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_이현호.png')}}">이현호</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">-10</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">32</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_양현.png')}}">양현</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">36</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_강동연.png')}}">강동연</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_김대우.png')}}">김대우</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_김대우.png')}}">김대우</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">91</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_임현준.png')}}">임현준</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">39</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_홍건희.png')}}">홍건희</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_서진용.png')}}">서진용</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_최성훈.png')}}">최성훈</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">87</td>
+    <td class="tg-0lax">56</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_윤명준.png')}}">윤명준</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">32</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_김태훈.png')}}">김태훈</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">93</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김태훈.png')}}">김태훈</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_한현희.png')}}">한현희</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_김원중.png')}}">김원중</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_홍성민.png')}}">홍성민</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_임기영.png')}}">임기영</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_문승원.png')}}">문승원</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_노성호.png')}}">노성호</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">15</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_이형범.png')}}">이형범</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">18</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_함덕주.png')}}">함덕주</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">85</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_박종기.png')}}">박종기</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_조상우.png')}}">조상우</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">61</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_조성운.png')}}">조성운</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_박진형.png')}}">박진형</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_구승민.png')}}">구승민</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">54</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_고영창.png')}}">고영창</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">44</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_박준표.png')}}">박준표</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김종수.png')}}">김종수</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김정빈.png')}}">김정빈</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">-1</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_손정욱.png')}}">손정욱</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">27</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_장현식.png')}}">장현식</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">18</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_임정호.png')}}">임정호</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_이상민.png')}}">이상민</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">16</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_박진우.png')}}">박진우</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">42</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_박세웅.png')}}">박세웅</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_조현우.png')}}">조현우</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">91</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_이영준.png')}}">이영준</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">54</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_문동욱.png')}}">문동욱</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">-1</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">54</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">73</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_이인복.png')}}">이인복</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">74</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_황영국.png')}}">황영국</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">23</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_조영우.png')}}">조영우</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">32</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_이승진.png')}}">이승진</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">45</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_이건욱.png')}}">이건욱</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">29</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_박민호.png')}}">박민호</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">60</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">79</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_배재환.png')}}">배재환</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">13</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_홍성무.png')}}">홍성무</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">8</td>
+    <td class="tg-0lax">16</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_김민수.png')}}">김민수</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">82</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_주권.png')}}">주권</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_이상규.png')}}">이상규</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">28</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">84</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_최원태.png')}}">최원태</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">39</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">85</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김택형.png')}}">김택형</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">8</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">86</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_임규빈.png')}}">임규빈</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">87</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_홍정우.png')}}">홍정우</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">88</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_배제성.png')}}">배제성</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">54</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">89</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_이민우.png')}}">이민우</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">90</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_박정수.png')}}">박정수</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">22</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">56</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">91</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_문경찬.png')}}">문경찬</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">11</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">92</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_이준영.png')}}">이준영</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">82</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">93</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김민우.png')}}">김민우</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">94</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김범수.png')}}">김범수</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">19</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">95</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_구창모.png')}}">구창모</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">79</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">61</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">96</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_김대현.png')}}">김대현</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">22</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">97</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_이영하.png')}}">이영하</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">98</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_전상현.png')}}">전상현</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">86</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">99</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_남재현.png')}}">남재현</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">73</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">100</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김주한.png')}}">김주한</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">36</td>
+    <td class="tg-0lax">42</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">101</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_최성영.png')}}">최성영</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">29</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">10</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">102</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_고우석.png')}}">고우석</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">103</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_김명신.png')}}">김명신</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">17</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">104</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_최원준.png')}}">최원준</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">58</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">105</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_박치국.png')}}">박치국</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">71</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">106</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_최지광.png')}}">최지광</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">107</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_장지훈.png')}}">장지훈</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">19</td>
+    <td class="tg-0lax">-7</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">108</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_강동호.png')}}">강동호</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">-15</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">109</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_이승호.png')}}">이승호</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">110</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_박진태.png')}}">박진태</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">9</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">111</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_박상원.png')}}">박상원</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">112</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_이원준.png')}}">이원준</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">12</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">113</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_소이현.png')}}">소이현</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">-9</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">114</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_김민.png')}}">김민</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">28</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">115</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_김민규.png')}}">김민규</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">45</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">116</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_안우진.png')}}">안우진</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">117</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_김윤수.png')}}">김윤수</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">118</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_최채흥.png')}}">최채흥</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">119</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_이승헌.png')}}">이승헌</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">88</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">120</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김진욱.png')}}">김진욱</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">15</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">121</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_김영규.png')}}">김영규</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">122</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_손동현.png')}}">손동현</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">39</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">-4</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">123</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_정우영.png')}}">정우영</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax">54</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">124</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_조영건.png')}}">조영건</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">125</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_원태인.png')}}">원태인</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">36</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">126</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_김현수.png')}}">김현수</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">-2</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">127</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_서준원.png')}}">서준원</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">36</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">128</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_김기훈.png')}}">김기훈</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">36</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">129</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_양승철.png')}}">양승철</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">11</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">130</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김이환.png')}}">김이환</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">27</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">131</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_백승건.png')}}">백승건</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">-9</td>
+    <td class="tg-0lax">-1</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">132</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_송명기.png')}}">송명기</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">58</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">133</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_배민서.png')}}">배민서</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">134</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_고효준.png')}}">고효준</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">19</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">135</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_노경은.png')}}">노경은</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">136</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_안영명.png')}}">안영명</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">17</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">137</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_송은범.png')}}">송은범</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">138</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_오주원.png')}}">오주원</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">100</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">139</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_윤성환.png')}}">윤성환</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">14</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">100</td>
+    <td class="tg-0lax">42</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">140</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_정우람.png')}}">정우람</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">141</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_신재웅.png')}}">신재웅</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">23</td>
+    <td class="tg-0lax">-9</td>
+    <td class="tg-0lax">44</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">142</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_전유수.png')}}">전유수</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">39</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">72</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">143</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_이보근.png')}}">이보근</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">82</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">144</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_김진성.png')}}">김진성</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">56</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">145</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_김건국.png')}}">김건국</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">73</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">146</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김세현.png')}}">김세현</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">147</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_장원삼.png')}}">장원삼</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">29</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">148</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_김상수.png')}}">김상수</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">43</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">149</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_진해수.png')}}">진해수</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">150</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_유원상.png')}}">유원상</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">151</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_김강률.png')}}">김강률</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">85</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">152</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_백정현.png')}}">백정현</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">153</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_장필준.png')}}">장필준</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">154</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_정찬헌.png')}}">정찬헌</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">155</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_홍상삼.png')}}">홍상삼</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">-9</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">156</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_임창민.png')}}">임창민</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">157</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_최동환.png')}}">최동환</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">158</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_유희관.png')}}">유희관</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">27</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">159</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_오현택.png')}}">오현택</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">58</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">160</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_강윤구.png')}}">강윤구</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">161</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_장민재.png')}}">장민재</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">44</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">162</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_여건욱.png')}}">여건욱</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">43</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">85</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">43</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">163</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_권오준.png')}}">권오준</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">21</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">164</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_이민호.png')}}">이민호</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">165</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_김윤식.png')}}">김윤식</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">45</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">166</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_브룩스.png')}}">브룩스</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">83</td>
+    <td class="tg-0lax">89</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">167</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_채지선.png')}}">채지선</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">22</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">56</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">168</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_김주온.png')}}">김주온</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">24</td>
+    <td class="tg-0lax">32</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">169</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_김현준.png')}}">김현준</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">37</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">170</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_김재웅.png')}}">김재웅</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">59</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">171</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_소형준.png')}}">소형준</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">172</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_허윤동.png')}}">허윤동</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">27</td>
+    <td class="tg-0lax">62</td>
+    <td class="tg-0lax">52</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">173</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_윤대경.png')}}">윤대경</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">75</td>
+    <td class="tg-0lax">61</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">174</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_강재민.png')}}">강재민</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">74</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">175</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_조병욱.png')}}">조병욱</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">44</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">176</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_이승민.png')}}">이승민</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">40</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">23</td>
+    <td class="tg-0lax">20</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">177</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_김진호.png')}}">김진호</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">17</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">178</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_정해영.png')}}">정해영</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">78</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">179</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_서덕원.png')}}">서덕원</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">-17</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">180</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_초준용.png')}}">최준용</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">181</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_이정용.png')}}">이정용</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">64</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax">60</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">182</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_신민혁.png')}}">신민혁</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">57</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">183</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_권휘.png')}}">권휘</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">184</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Tigers_김재열.png')}}">김재열</a></td>
+    <td class="tg-0lax">Tigers</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">185</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_남호.png')}}">남호</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">56</td>
+    <td class="tg-0lax">30</td>
+    <td class="tg-0lax">77</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">186</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_심창민.png')}}">심창민</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">38</td>
+    <td class="tg-0lax">39</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">187</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_양기현.png')}}">양기현</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">59</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">188</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_김성민.png')}}">김성민</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">58</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">45</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">189</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_박주홍.png')}}">박주홍</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">14</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">190</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Lions_우규민.png')}}">우규민</a></td>
+    <td class="tg-0lax">Lions</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">74</td>
+    <td class="tg-0lax">40</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">191</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Dinos_원종현.png')}}">원종현</a></td>
+    <td class="tg-0lax">Dinos</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">70</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">192</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_이현승.png')}}">이현승</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">65</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">80</td>
+    <td class="tg-0lax">47</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">193</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Twins_차우찬.png')}}">차우찬</a></td>
+    <td class="tg-0lax">Twins</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">194</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_박희수.png')}}">박희수</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">69</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">32</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">195</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Bears_이용찬.png')}}">이용찬</a></td>
+    <td class="tg-0lax">Bears</td>
+    <td class="tg-0lax">37</td>
+    <td class="tg-0lax">45</td>
+    <td class="tg-0lax">76</td>
+    <td class="tg-0lax">-11</td>
+    <td class="tg-0lax">43</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">196</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_장시환.png')}}">장시환</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">51</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">197</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_이상화.png')}}">이상화</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">29</td>
+    <td class="tg-0lax">44</td>
+    <td class="tg-0lax">48</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">198</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_하준호.png')}}">하준호</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">41</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">31</td>
+    <td class="tg-0lax">90</td>
+    <td class="tg-0lax">41</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">199</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_진명호.png')}}">진명호</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">67</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">25</td>
+    <td class="tg-0lax">60</td>
+    <td class="tg-0lax">42</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">200</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_정영일.png')}}">정영일</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">47</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">-9</td>
+    <td class="tg-0lax">50</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">201</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_이대은.png')}}">이대은</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">49</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">46</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">202</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_하재훈.png')}}">하재훈</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">50</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">34</td>
+    <td class="tg-0lax">35</td>
+    <td class="tg-0lax">42</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">203</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Landers_정수민.png')}}">정수민</a></td>
+    <td class="tg-0lax">Landers</td>
+    <td class="tg-0lax">46</td>
+    <td class="tg-0lax">55</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">100</td>
+    <td class="tg-0lax">63</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">204</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Wiz_김재윤.png')}}">김재윤</a></td>
+    <td class="tg-0lax">Wiz</td>
+    <td class="tg-0lax">63</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">74</td>
+    <td class="tg-0lax">51</td>
+    <td class="tg-0lax">58</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">205</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_김선기.png')}}">김선기</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">33</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">81</td>
+    <td class="tg-0lax">55</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">206</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Eagles_김진영.png')}}">김진영</a></td>
+    <td class="tg-0lax">Eagles</td>
+    <td class="tg-0lax">68</td>
+    <td class="tg-0lax">52</td>
+    <td class="tg-0lax">57</td>
+    <td class="tg-0lax">53</td>
+    <td class="tg-0lax">53</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">207</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Giants_송승준.png')}}">송승준</a></td>
+    <td class="tg-0lax">Giants</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">48</td>
+    <td class="tg-0lax">39</td>
+    <td class="tg-0lax">66</td>
+    <td class="tg-0lax">49</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">208</td>
+    <td class="tg-0lax"><a href="{{url_for('static', filename='pitcher_stat_img/Heroes_윤정현.png')}}">윤정현</a></td>
+    <td class="tg-0lax">Heroes</td>
+    <td class="tg-0lax">26</td>
+    <td class="tg-0lax">42</td>
+    <td class="tg-0lax">61</td>
+    <td class="tg-0lax">54</td>
+    <td class="tg-0lax">40</td>
+  </tr>
+</tbody>
+</table>
+{% endblock %}

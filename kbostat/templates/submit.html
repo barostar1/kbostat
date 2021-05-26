@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>
+        draw star by number
+    </title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1> 투수 ERA 예측 </h1><br>
+    <form method="post" action="/era/calculate">
+        <div>
+            <label for="num1"> K/9: (9이닝당 탈삼진) </label>
+            <input type="text" name="num1">
+        </div>
+        <div>
+            <label for="num2"> BB/9: (9이닝당 볼넷허용) </label>
+            <input type="text" name="num2">
+        </div>
+        <div>
+            <label for="num3"> HR/9: (9이닝당 피홈런) </label>
+            <input type="text" name="num3">
+        </div>
+        <div class='button'>
+            <button type="submit"> ERA 예측 </button>
+        </div>
+    </form>
+    <div>
+        <p>
+            <h5> 9이닝당 탈삼진 : {{num1}} 를 입력받았습니다. </h5>
+            <h5> 9이닝당 볼넷허용 : {{num2}} 를 입력받았습니다. </h5>
+            <h5> 9이닝당 피홈런 : {{num3}} 를 입력받았습니다. </h5>
+            <h5> 세가지 변수를 통해 예측된 선수의 평균 자책점은 {{predict}} 입니다. </h5>
+        </p>
+    </div>
+</body>
+</html>
+{% endblock %}
